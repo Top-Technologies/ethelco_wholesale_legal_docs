@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_legal_docs" model="ir.ui.view">
+        <field name="name">res.partner.form.legal.docs</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_legal_documents"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-balance-scale"
+                        invisible="not is_wholesale_customer">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Legal Docs</span>
+                        <field name="legal_compliance_status" widget="badge" class="o_stat_value"
+                               decoration-success="legal_compliance_status == 'compliant'"
+                               decoration-warning="legal_compliance_status == 'expiring'"
+                               decoration-danger="legal_compliance_status == 'non_compliant'"/>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//page[@name='sales_purchases']" position="after">
+                <page string="Legal Documents" name="legal_documents"
+                      invisible="not is_company and not is_wholesale_customer">
+                    <group>
+                        <group>
+                            <field name="is_wholesale_customer"/>
+                            <field name="legal_compliance_status" widget="badge"
+                                     decoration-success="legal_compliance_status == 'compliant'"
+                                     decoration-warning="legal_compliance_status == 'expiring'"
+                                     decoration-danger="legal_compliance_status == 'non_compliant'"
+                                     invisible="not is_wholesale_customer"/>
+                        </group>
+                        <group>
+                            <field name="legal_missing_info"
+                                     invisible="not legal_missing_info"
+                                     readonly="1"
+                                     class="text-danger"/>
+                        </group>
+                    </group>
+                    <field name="legal_document_ids" context="{'default_partner_id': id}">
+                        <list editable="bottom"
+                              decoration-danger="state in ('missing', 'expired')"
+                              decoration-warning="state == 'expiring'"
+                              decoration-success="state == 'valid'">
+                            <field name="type_id"/>
+                            <field name="document_number"/>
+                            <field name="issue_date"/>
+                            <field name="expiry_date"/>
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                            <field name="verified" groups="ethelco_wholesale_legal_docs.group_legal_compliance_manager"/>
+                            <field name="state" widget="badge"
+                                     decoration-danger="state in ('missing', 'expired')"
+                                     decoration-warning="state == 'expiring'"
+                                     decoration-success="state == 'valid'"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="is_wholesale_customer"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_filter_legal_docs" model="ir.ui.view">
+        <field name="name">res.partner.search.legal.docs</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='type_company']" position="after">
+                <separator/>
+                <filter string="Wholesale Customers"
+                        name="wholesale_customers"
+                        domain="[('is_wholesale_customer', '=', True)]"/>
+                <filter string="Non-compliant"
+                        name="legal_non_compliant"
+                        domain="[('is_wholesale_customer', '=', True), ('legal_compliance_status', '=', 'non_compliant')]"/>
+                <filter string="Expiring in 30 days"
+                        name="legal_expiring_30"
+                        domain="[('is_wholesale_customer', '=', True), ('legal_compliance_status', '=', 'expiring')]"/>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter string="Legal Compliance"
+                        name="group_legal_compliance"
+                        context="{'group_by': 'legal_compliance_status'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

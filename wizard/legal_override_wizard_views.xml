@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_legal_override_wizard_form" model="ir.ui.view">
+        <field name="name">ethelco.legal.override.wizard.form</field>
+        <field name="model">ethelco.legal.override.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Legal Override">
+                <group>
+                    <field name="order_id" readonly="1"/>
+                    <field name="partner_id" readonly="1"/>
+                    <field name="blocker_info" readonly="1"
+                             invisible="not blocker_info"
+                             class="text-danger"/>
+                    <field name="reason" placeholder="Explain why confirmation is allowed despite missing/expired documents..."/>
+                </group>
+                <footer>
+                    <button name="action_confirm_with_override"
+                            type="object"
+                            string="Confirm with Override"
+                            class="btn-primary"
+                            data-hotkey="q"/>
+                    <button string="Cancel" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

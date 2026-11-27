@@ -1,0 +1,153 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ethelco_wholesale_legal_docs
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-27 08:00:00\n"
+"PO-Revision-Date: 2026-03-27 08:00:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.module.module,shortdesc:ethelco_wholesale_legal_docs.module_meta_information
+msgid "Ethelco Wholesale Legal Documents"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model,name:ethelco_wholesale_legal_docs.model_ethelco_legal_document_type
+msgid "Legal Document Type"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model,name:ethelco_wholesale_legal_docs.model_ethelco_partner_legal_document
+msgid "Partner Legal Document"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model,name:ethelco_wholesale_legal_docs.model_ethelco_legal_override_wizard
+msgid "Legal Document Confirmation Override"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model.fields,field_description:ethelco_wholesale_legal_docs.field_res_partner__is_wholesale_customer
+msgid "Wholesale Customer"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model.fields,field_description:ethelco_wholesale_legal_docs.field_res_partner__legal_compliance_status
+msgid "Legal Compliance"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model.fields.selection,name:ethelco_wholesale_legal_docs.selection__res_partner__legal_compliance_status__compliant
+msgid "Compliant"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model.fields.selection,name:ethelco_wholesale_legal_docs.selection__res_partner__legal_compliance_status__expiring
+msgid "Expiring"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model.fields.selection,name:ethelco_wholesale_legal_docs.selection__res_partner__legal_compliance_status__non_compliant
+msgid "Non-compliant"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model.fields.selection,name:ethelco_wholesale_legal_docs.selection__ethelco_partner_legal_document__state__missing
+msgid "Missing"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model.fields.selection,name:ethelco_wholesale_legal_docs.selection__ethelco_partner_legal_document__state__valid
+msgid "Valid"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.model.fields.selection,name:ethelco_wholesale_legal_docs.selection__ethelco_partner_legal_document__state__expired
+msgid "Expired"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: code:addons/ethelco_wholesale_legal_docs/models/sale_order.py:0
+msgid ""
+"Sales Order %(order)s cannot be confirmed for wholesale customer "
+"%(partner)s. Required legal documents are missing, unverified or expired:\n"
+"%(docs)s\n"
+"\n"
+"A Legal Compliance Manager may use Legal Override to proceed."
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: code:addons/ethelco_wholesale_legal_docs/models/partner_legal_document.py:0
+msgid "Only Legal Compliance Managers can verify legal documents."
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: code:addons/ethelco_wholesale_legal_docs/wizard/legal_override_wizard.py:0
+msgid "Only Legal Compliance Managers can override legal document checks."
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: code:addons/ethelco_wholesale_legal_docs/wizard/legal_override_wizard.py:0
+msgid "An override reason is required."
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ethelco.legal.document.type,name:ethelco_wholesale_legal_docs.legal_doc_type_trade_license
+msgid "Trade License"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ethelco.legal.document.type,name:ethelco_wholesale_legal_docs.legal_doc_type_tin
+msgid "TIN Certificate"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ethelco.legal.document.type,name:ethelco_wholesale_legal_docs.legal_doc_type_vat
+msgid "VAT Certificate"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ethelco.legal.document.type,name:ethelco_wholesale_legal_docs.legal_doc_type_wholesale_agreement
+msgid "Signed Wholesale Agreement"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ethelco.legal.document.type,name:ethelco_wholesale_legal_docs.legal_doc_type_tax_clearance
+msgid "Tax Clearance"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.actions.act_window,name:ethelco_wholesale_legal_docs.action_legal_document_type
+#: model:ir.ui.menu,name:ethelco_wholesale_legal_docs.menu_legal_document_type
+msgid "Legal Document Types"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.actions.act_window,name:ethelco_wholesale_legal_docs.action_wholesale_compliance_report
+#: model:ir.ui.menu,name:ethelco_wholesale_legal_docs.menu_wholesale_compliance_report
+msgid "Wholesale Legal Compliance"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:ir.module.category,name:ethelco_wholesale_legal_docs.module_category_ethelco_legal_docs
+msgid "Wholesale Legal Documents"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:res.groups,name:ethelco_wholesale_legal_docs.group_legal_docs_user
+msgid "Legal Docs User"
+msgstr ""
+
+#. module: ethelco_wholesale_legal_docs
+#: model:res.groups,name:ethelco_wholesale_legal_docs.group_legal_compliance_manager
+msgid "Legal Compliance Manager"
+msgstr ""

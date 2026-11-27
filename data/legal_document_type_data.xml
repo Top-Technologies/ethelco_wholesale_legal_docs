@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="legal_doc_type_trade_license" model="ethelco.legal.document.type">
+            <field name="name">Trade License</field>
+            <field name="code">TRADE_LICENSE</field>
+            <field name="sequence">10</field>
+            <field name="required_for_wholesale" eval="True"/>
+            <field name="has_expiry" eval="True"/>
+            <field name="warning_days">30</field>
+        </record>
+
+        <record id="legal_doc_type_tin" model="ethelco.legal.document.type">
+            <field name="name">TIN Certificate</field>
+            <field name="code">TIN</field>
+            <field name="sequence">20</field>
+            <field name="required_for_wholesale" eval="True"/>
+            <field name="has_expiry" eval="False"/>
+            <field name="warning_days">30</field>
+        </record>
+
+        <record id="legal_doc_type_vat" model="ethelco.legal.document.type">
+            <field name="name">VAT Certificate</field>
+            <field name="code">VAT</field>
+            <field name="sequence">30</field>
+            <field name="required_for_wholesale" eval="True"/>
+            <field name="has_expiry" eval="False"/>
+            <field name="warning_days">30</field>
+        </record>
+
+        <record id="legal_doc_type_wholesale_agreement" model="ethelco.legal.document.type">
+            <field name="name">Signed Wholesale Agreement</field>
+            <field name="code">WHOLESALE_AGREEMENT</field>
+            <field name="sequence">40</field>
+            <field name="required_for_wholesale" eval="True"/>
+            <field name="has_expiry" eval="True"/>
+            <field name="warning_days">30</field>
+        </record>
+
+        <record id="legal_doc_type_tax_clearance" model="ethelco.legal.document.type">
+            <field name="name">Tax Clearance</field>
+            <field name="code">TAX_CLEARANCE</field>
+            <field name="sequence">50</field>
+            <field name="required_for_wholesale" eval="True"/>
+            <field name="has_expiry" eval="True"/>
+            <field name="warning_days">30</field>
+        </record>
+    </data>
+</odoo>

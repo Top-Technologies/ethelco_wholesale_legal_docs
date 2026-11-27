@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_legal_document_type"
+              name="Legal Document Types"
+              parent="sale.menu_sale_config"
+              action="action_legal_document_type"
+              sequence="50"
+              groups="ethelco_wholesale_legal_docs.group_legal_compliance_manager"/>
+
+    <menuitem id="menu_partner_legal_document"
+              name="Partner Legal Documents"
+              parent="sale.sale_order_menu"
+              action="action_partner_legal_document"
+              sequence="45"
+              groups="ethelco_wholesale_legal_docs.group_legal_docs_user"/>
+</odoo>

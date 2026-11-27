@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_wholesale_compliance_list" model="ir.ui.view">
+        <field name="name">res.partner.wholesale.compliance.list</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <list string="Wholesale Legal Compliance"
+                  decoration-danger="legal_compliance_status == 'non_compliant'"
+                  decoration-warning="legal_compliance_status == 'expiring'"
+                  decoration-success="legal_compliance_status == 'compliant'"
+                  create="0">
+                <field name="name"/>
+                <field name="ref"/>
+                <field name="user_id" string="Salesperson"/>
+                <field name="legal_compliance_status" widget="badge"
+                         decoration-success="legal_compliance_status == 'compliant'"
+                         decoration-warning="legal_compliance_status == 'expiring'"
+                         decoration-danger="legal_compliance_status == 'non_compliant'"/>
+                <field name="legal_missing_info"/>
+                <field name="phone" optional="hide"/>
+                <field name="email" optional="hide"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_wholesale_compliance_search" model="ir.ui.view">
+        <field name="name">res.partner.wholesale.compliance.search</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search string="Wholesale Legal Compliance">
+                <field name="name"/>
+                <field name="user_id"/>
+                <filter string="Compliant" name="compliant" domain="[('legal_compliance_status', '=', 'compliant')]"/>
+                <filter string="Expiring" name="expiring" domain="[('legal_compliance_status', '=', 'expiring')]"/>
+                <filter string="Non-compliant" name="non_compliant" domain="[('legal_compliance_status', '=', 'non_compliant')]"/>
+                <group>
+                    <filter string="Compliance Status" name="group_status" context="{'group_by': 'legal_compliance_status'}"/>
+                    <filter string="Salesperson" name="group_user" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_wholesale_compliance_report" model="ir.actions.act_window">
+        <field name="name">Wholesale Legal Compliance</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('is_wholesale_customer', '=', True)]</field>
+        <field name="context">{
+            {
+                'search_default_group_status': 1,
+            }
+        </field>
+        <field name="search_view_id" ref="view_wholesale_compliance_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No wholesale customers yet.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_wholesale_compliance_report_view_list" model="ir.actions.act_window.view">
+        <field name="sequence">1</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_wholesale_compliance_list"/>
+        <field name="act_window_id" ref="action_wholesale_compliance_report"/>
+    </record>
+
+    <menuitem id="menu_wholesale_compliance_report"
+              name="Wholesale Legal Compliance"
+              parent="sale.sale_order_menu"
+              action="action_wholesale_compliance_report"
+              sequence="46"
+              groups="ethelco_wholesale_legal_docs.group_legal_docs_user"/>
+</odoo>

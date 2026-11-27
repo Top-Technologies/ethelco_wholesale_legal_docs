@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_legal_document_type_user,ethelco.legal.document.type.user,model_ethelco_legal_document_type,group_legal_docs_user,1,0,0,0
+access_legal_document_type_manager,ethelco.legal.document.type.manager,model_ethelco_legal_document_type,group_legal_compliance_manager,1,1,1,1
+access_partner_legal_document_user,ethelco.partner.legal.document.user,model_ethelco_partner_legal_document,group_legal_docs_user,1,1,1,0
+access_partner_legal_document_manager,ethelco.partner.legal.document.manager,model_ethelco_partner_legal_document,group_legal_compliance_manager,1,1,1,1
+access_legal_override_wizard_manager,ethelco.legal.override.wizard.manager,model_ethelco_legal_override_wizard,group_legal_compliance_manager,1,1,1,1
+access_legal_document_type_sale_user,ethelco.legal.document.type.sale.user,model_ethelco_legal_document_type,sales_team.group_sale_salesman,1,0,0,0
+access_partner_legal_document_sale_user,ethelco.partner.legal.document.sale.user,model_ethelco_partner_legal_document,sales_team.group_sale_salesman,1,0,0,0

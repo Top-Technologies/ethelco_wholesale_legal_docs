@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="module_category_ethelco_legal_docs" model="ir.module.category">
+            <field name="name">Wholesale Legal Documents</field>
+            <field name="sequence">45</field>
+        </record>
+
+        <record id="group_legal_docs_user" model="res.groups">
+            <field name="name">Legal Docs User</field>
+            <field name="category_id" ref="module_category_ethelco_legal_docs"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">Can upload and maintain partner legal documents.</field>
+        </record>
+
+        <record id="group_legal_compliance_manager" model="res.groups">
+            <field name="name">Legal Compliance Manager</field>
+            <field name="category_id" ref="module_category_ethelco_legal_docs"/>
+            <field name="implied_ids" eval="[(4, ref('group_legal_docs_user'))]"/>
+            <field name="comment">Can verify documents, configure types, and override SO confirmation blocks.</field>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+    </data>
+</odoo>

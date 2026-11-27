@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_legal_docs" model="ir.ui.view">
+        <field name="name">sale.order.form.legal.docs</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_open_legal_override_wizard"
+                        type="object"
+                        string="Legal Override"
+                        class="btn-secondary"
+                        invisible="not legal_blocked or state in ('sale', 'cancel', 'done')"
+                        groups="ethelco_wholesale_legal_docs.group_legal_compliance_manager"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-danger mb-0" role="alert"
+                     invisible="not legal_blocked">
+                    <field name="legal_block_message" nolabel="1" readonly="1"/>
+                </div>
+            </xpath>
+            <xpath expr="//page[@name='other_information']" position="inside">
+                <group string="Legal Compliance" name="legal_compliance"
+                       groups="ethelco_wholesale_legal_docs.group_legal_docs_user">
+                    <field name="legal_blocked" invisible="1"/>
+                    <field name="legal_override_reason" readonly="1"/>
+                    <field name="legal_override_user_id" readonly="1"/>
+                    <field name="legal_override_date" readonly="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
